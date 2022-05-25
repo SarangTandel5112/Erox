@@ -6,29 +6,33 @@ import DBConnection from './DbConnection/connect';
 const logger = new Logger().logger;
 const routes = new Route().router;
 new DBConnection();
-class App{
-    private app:express.Application;
-    constructor(){
-        this.app= express();
+class App {
+
+    private app: express.Application;
+
+    constructor() {
+        this.app = express();
         this.middlewares();
         this.routes();
-        this.app.use((err:any,req:any,res:any,next:any)=>{
-            if(err){
-                return res.status(500).json({status:false,data:'Some Internal Server Error Occured'})
+        this.app.use((err: any, req: any, res: any, next: any) => {
+            if (err) {
+                return res.status(500).json({ status: false, data: 'Some Internal Server Error Occured' })
             }
             next();
         })
-        this.app.listen(process.env.PORT,()=>{
-
+        this.app.listen(process.env.PORT, () => {
             logger.info(`Server Running on port ${process.env.PORT}`);
         })
     }
-    private middlewares(){
-        this.app.use(express.urlencoded({extended:true}));
+
+    private middlewares() {
+        this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.json());
     }
-    private routes(){
-        this.app.use('/',routes);
+
+    private routes() {
+        this.app.use('/', routes);
     }
+
 }
 export default App;
