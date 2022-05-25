@@ -3,9 +3,11 @@ import 'dotenv/config';
 import Route from './Routes/checkRoute';
 import Logger from "./Logger/Logger";
 import DBConnection from './DbConnection/connect';
+
 const logger = new Logger().logger;
 const routes = new Route().router;
 new DBConnection();
+
 class App {
 
     private app: express.Application;

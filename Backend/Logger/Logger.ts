@@ -17,6 +17,7 @@ class Logger {
     public logger: winston.Logger;
 
     constructor() {
+        
         this.logger = createLogger({
             format: combine(
                 label({ label: "E-Rox" }),
