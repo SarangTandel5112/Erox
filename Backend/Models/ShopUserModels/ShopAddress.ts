@@ -1,5 +1,5 @@
 import { Schema ,model} from "mongoose";
-import ShopAddressInterface from "../ShopUserInterfaces/ShopAddress";
+import ShopAddressInterface from "../../Interfaces/ShopUserInterfaces/ShopAddress";
 
 
 
