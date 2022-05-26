@@ -5,7 +5,7 @@ const BankAccountSchema = new Schema<BankAccountInterface>({
 
     shopUserId: {
         type: Schema.Types.ObjectId,
-
+        ref: "ShopUser"
     },
     accountNumber: {
         type: String,
