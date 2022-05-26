@@ -7,7 +7,6 @@ class DBConnection {
 
     constructor() {
         try {
-            console.log(process.env.DATABASE_URI as string)
             mongoose.connect(process.env.DATABASE_URI as string, {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
