@@ -5,7 +5,7 @@ const BankAccountSchema = new Schema<BankAccountInterface>({
 
     shopUserId: {
         type: Schema.Types.ObjectId,
-
+        ref: "ShopUser"
     },
     accountNumber: {
         type: String,
@@ -24,7 +24,7 @@ const BankAccountSchema = new Schema<BankAccountInterface>({
         required: true
     }
 
-})
+}, { timestamps: true })
 
 const BankAccount = model<BankAccountInterface>("BankAccount", BankAccountSchema)
 export default BankAccount;
