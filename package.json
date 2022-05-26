@@ -1,0 +1,24 @@
+{
+  "name": "e-rox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"concurrently \"cd Backend && npm run start\"  \"cd Frontend Frontend && npm run start\" ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SarangTandel5112/Erox.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SarangTandel5112/Erox/issues"
+  },
+  "homepage": "https://github.com/SarangTandel5112/Erox#readme",
+  "dependencies": {
+    "concurrently": "^7.2.1"
+  }
+}
