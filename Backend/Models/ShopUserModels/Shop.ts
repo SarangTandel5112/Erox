@@ -18,7 +18,7 @@ const ShopSchema = new Schema<ShopInterface>({
         type: Schema.Types.ObjectId,
         ref: "ShopAddress"
     }
-})
+}, { timestamps: true })
 
 const Shop = model<ShopInterface>("Shop", ShopSchema);
 export default Shop;

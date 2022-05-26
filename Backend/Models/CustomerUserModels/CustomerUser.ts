@@ -37,7 +37,7 @@ const CustomerUserSchema = new Schema<CustomerUserInterface>({
         required: true
     }
 
-})
+}, { timestamps: true })
 
 const CustomerUser = model<CustomerUserInterface>("CustomerUser", CustomerUserSchema)
 export default CustomerUser;

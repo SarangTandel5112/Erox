@@ -24,7 +24,7 @@ const BankAccountSchema = new Schema<BankAccountInterface>({
         required: true
     }
 
-})
+}, { timestamps: true })
 
 const BankAccount = model<BankAccountInterface>("BankAccount", BankAccountSchema)
 export default BankAccount;
