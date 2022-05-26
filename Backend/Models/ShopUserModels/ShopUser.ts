@@ -37,9 +37,11 @@ const shopUserSchema = new Schema<ShopUserInterface>({
     },
     bankAccountId:{
         type:Schema.Types.ObjectId,
+        ref:"BankAccount"
     },
     shopAddress:{
         type:Schema.Types.ObjectId,
+        ref:"ShopAdress",
         required:true
     },
     shopId:{

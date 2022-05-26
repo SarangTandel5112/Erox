@@ -8,7 +8,8 @@ const shopUserSchema = new Schema<ShopAddressInterface>({
         type:Schema.Types.ObjectId
     },
     shopUserId:{
-        type:Schema.Types.ObjectId
+        type:Schema.Types.ObjectId,
+        ref:'ShopUser'
     },
     addressLine1:{
         type:String,
