@@ -1,5 +1,5 @@
 import { Schema ,model} from "mongoose";
-import ShopUserInterface from "../Interfaces/ShopUserInterface";
+import ShopUserInterface from "../ShopUserInterfaces/ShopUserInterface";
 
 
 
@@ -14,6 +14,12 @@ const shopUserSchema = new Schema<ShopUserInterface>({
         required:true,
     },
     emailId:{
+        type:String,
+        required:true,
+        unique:true
+
+    },
+    userName:{
         type:String,
         required:true,
         unique:true
