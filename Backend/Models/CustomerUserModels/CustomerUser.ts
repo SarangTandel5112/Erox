@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import CustomerUserInterface from "../Interfaces/CustomerUserInterace";
+import CustomerUserInterface from "../../Interfaces/CustomerUserInterfaces/CustomerUserInterace";
 
 const CustomerUserSchema = new Schema<CustomerUserInterface>({
 
@@ -10,6 +10,11 @@ const CustomerUserSchema = new Schema<CustomerUserInterface>({
     lastName: {
         type: String,
         required: true
+    },
+    userName: {
+        type: String,
+        required: true,
+        unique: true
     },
     password: {
         type: String,
@@ -34,5 +39,5 @@ const CustomerUserSchema = new Schema<CustomerUserInterface>({
 
 })
 
-const CustomerUser = model("CustomerUser", CustomerUserSchema)
+const CustomerUser = model<CustomerUserInterface>("CustomerUser", CustomerUserSchema)
 export default CustomerUser;

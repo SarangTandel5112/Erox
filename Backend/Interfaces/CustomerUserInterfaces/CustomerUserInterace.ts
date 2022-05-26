@@ -3,6 +3,7 @@ import { Document } from "mongoose";
 interface CustomerUserInterface extends Document {
     firstName: String,
     lastName: String,
+    userName:String,
     password: String,
     emailId: String,
     accessToken: String,
