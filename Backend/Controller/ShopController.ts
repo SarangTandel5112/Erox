@@ -42,7 +42,12 @@ class ShopController {
                 .status(400)
                 .json({ status: false, data: "Phone Number is not provided" });
         }
-        shopuserutils.fetchShopBYEmail(emailId);
+        const user = await shopuserutils.fetchShopBYEmail(emailId);
+        if (user) {
+            return res
+                .status(400)
+                .json({ status: false, data: "EmailId Already Exist" });
+        }
         const bcryptpassword = await bcrypt.hash(password, 10);
         const newUser = new ShopUser({
             firstName,
