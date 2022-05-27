@@ -2,8 +2,8 @@ import ShopUser from "../../Models/ShopUserModels/ShopUser";
 
 class shopUserUtils {
 
-    public fetchShopBYEmail = (email: string) => {
-        return ShopUser.findOne({ emailId: email });
+    public fetchShopBYEmail = async (email: string) => {
+        return await ShopUser.findOne({ emailId: email });
     }
 
 }
