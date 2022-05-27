@@ -1,11 +1,21 @@
+import 'express-async-errors';
 import express from 'express';
 import 'dotenv/config';
-import Route from './Routes/checkRoute';
 import Logger from "./Logger/Logger";
 import DBConnection from './DbConnection/connect';
+import ShopRouter from './Routes/shopRoutes';
 
 const logger = new Logger().logger;
-const routes = new Route().router;
+process.on('uncaughtException', (ex) => {
+    logger.error(ex.message);
+})
+process.on('unhandledRejection', (ex) => {
+    throw ex;
+})
+
+
+
+const shopRoutes = new ShopRouter().router;
 new DBConnection();
 
 class App {
@@ -13,11 +23,13 @@ class App {
     private app: express.Application;
 
     constructor() {
+
         this.app = express();
         this.middlewares();
         this.routes();
         this.app.use((err: any, req: any, res: any, next: any) => {
             if (err) {
+                console.log("Something hapens");
                 return res.status(500).json({ status: false, data: 'Some Internal Server Error Occured' })
             }
             next();
@@ -33,7 +45,7 @@ class App {
     }
 
     private routes() {
-        this.app.use('/', routes);
+        this.app.use('/', shopRoutes);
     }
 
 }

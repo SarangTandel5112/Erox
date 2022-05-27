@@ -45,7 +45,8 @@ const shopUserSchema = new Schema<ShopUserInterface>({
         required: true
     },
     shopId: {
-        type: Schema.Types.ObjectId
+        type: Schema.Types.ObjectId,
+        ref: "Shop"
     },
     email_verified: {
         type: Boolean,
