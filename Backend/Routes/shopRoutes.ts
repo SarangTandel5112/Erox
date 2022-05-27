@@ -15,8 +15,8 @@ class ShopRouter {
     }
 
     private loadRoutes() {
-        this.router.route('/register').post(shopvalidation.validateshop, shopcontroller.shopRegister);
-        this.router.route('/verify/:token').get(shopcontroller.verifyemail);
+        this.router.route('/shopregister').post(shopvalidation.validateshop, shopcontroller.shopRegister);
+        this.router.route('/shopverify/:token').get(shopcontroller.verifyemail);
     }
 
 }
