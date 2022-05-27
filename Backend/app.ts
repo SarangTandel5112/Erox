@@ -3,7 +3,7 @@ import express from 'express';
 import 'dotenv/config';
 import Logger from "./Logger/Logger";
 import DBConnection from './DbConnection/connect';
-import ShopRouter from './Routes/shopRoutes';
+import ShopRouter from './Routes/ShopUserRoutes';
 
 const logger = new Logger().logger;
 process.on('uncaughtException', (ex) => {
@@ -16,6 +16,7 @@ process.on('unhandledRejection', (ex) => {
 
 
 const shopRoutes = new ShopRouter().router;
+
 new DBConnection();
 
 class App {

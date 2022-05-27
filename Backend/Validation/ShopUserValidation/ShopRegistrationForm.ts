@@ -8,6 +8,7 @@ class ShopRegistationForm {
     public checkDetails = async (req: Request, res: Response, next: NextFunction) => {
 
         const { firstName, lastName, emailId, userName, password, phoneNumber, accountNumber, IFSCcode, bankName, branchName, addressLine1, addressLine2, landMark, district, state, country, zipCode, shopName, GSTno } = req.body;
+
         if (!firstName) {
             return res
                 .status(400)
@@ -110,7 +111,7 @@ class ShopRegistationForm {
                 .status(400)
                 .json({ status: false, data: "GST Number is not provided" });
         }
-        next();
+        // next();
     }
 
 }

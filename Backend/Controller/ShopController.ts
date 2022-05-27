@@ -8,9 +8,7 @@ import nodemailer from "nodemailer";
 import Logger from "../Logger/Logger";
 import bcrypt from "bcryptjs";
 
-
 const logger = new Logger().logger;
-
 
 class ShopController {
 
