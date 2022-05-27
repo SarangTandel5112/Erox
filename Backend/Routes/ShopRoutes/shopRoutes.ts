@@ -1,7 +1,7 @@
 import express from 'express';
-import ShopController from '../Controller/ShopController';
-import ShopRegistration from "../Validation/ShopUserValidation/ShopRegistration"
-import ShopRegistationForm from '../Validation/ShopUserValidation/ShopRegistrationForm';
+import ShopController from '../../Controller/ShopControllers/ShopController';
+import ShopRegistration from "../../Validation/ShopUserValidation/ShopRegistration"
+import ShopRegistationForm from '../../Validation/ShopUserValidation/ShopRegistrationForm';
 
 const shopcontroller = new ShopController();
 const shopvalidation = new ShopRegistration();
