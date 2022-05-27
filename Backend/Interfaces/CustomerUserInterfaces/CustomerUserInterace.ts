@@ -6,7 +6,7 @@ interface CustomerUserInterface extends Document {
     userName:String,
     password: String,
     emailId: String,
-    accessToken: String,
+    accessToken?: String,
     phoneNumber: Number,
     email_verified: Boolean
 }
