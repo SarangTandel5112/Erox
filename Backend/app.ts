@@ -3,11 +3,7 @@ import express from 'express';
 import 'dotenv/config';
 import Logger from "./Logger/Logger";
 import DBConnection from './DbConnection/connect';
-<<<<<<< HEAD
-import ShopRouter from './Routes/ShopUserRoutes';
-=======
 import ShopRouter from './Routes/ShopRoutes/shopRoutes';
->>>>>>> 0af95c7bb973d2edbca2991ad8b8310e8620cf6f
 
 const logger = new Logger().logger;
 process.on('uncaughtException', (ex) => {
