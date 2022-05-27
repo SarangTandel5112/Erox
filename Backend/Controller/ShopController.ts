@@ -7,48 +7,19 @@ import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 import Logger from "../Logger/Logger";
 import bcrypt from "bcryptjs";
-import ShopUserUtils from "../Utils/ShopUserUtils/ShopUserUtils";
+
 
 const logger = new Logger().logger;
-const shopuserutils = new ShopUserUtils();
+
 
 class ShopController {
 
     public shopRegister = async (req: Request, res: Response) => {
 
         const { firstName, lastName, emailId, userName, password, phoneNumber } = req.body;
-        if (!firstName) {
-            return res
-                .status(400)
-                .json({ status: false, data: "First Name is not provided" });
-        }
-        if (!lastName) {
-            return res
-                .status(400)
-                .json({ status: false, data: "Last Name is not provided" });
-        }
-        if (!emailId) {
-            return res
-                .status(400)
-                .json({ status: false, data: "Email Id is not provided" });
-        }
-        if (!password) {
-            return res
-                .status(400)
-                .json({ status: false, data: "Password is not provided" });
-        }
-        if (!phoneNumber) {
-            return res
-                .status(400)
-                .json({ status: false, data: "Phone Number is not provided" });
-        }
-        const user = await shopuserutils.fetchShopBYEmail(emailId);
-        if (user) {
-            return res
-                .status(400)
-                .json({ status: false, data: "EmailId Already Exist" });
-        }
+
         const bcryptpassword = await bcrypt.hash(password, 10);
+
         const newUser = new ShopUser({
             firstName,
             lastName,
@@ -59,26 +30,7 @@ class ShopController {
         })
 
         const { accountNumber, IFSCcode, bankName, branchName } = req.body;
-        if (!accountNumber) {
-            return res
-                .status(400)
-                .json({ status: false, data: "Account Number is not provided" });
-        }
-        if (!IFSCcode) {
-            return res
-                .status(400)
-                .json({ status: false, data: "IFSC Code is not provided" });
-        }
-        if (!bankName) {
-            return res
-                .status(400)
-                .json({ status: false, data: "Bank Name is not provided" });
-        }
-        if (!branchName) {
-            return res
-                .status(400)
-                .json({ status: false, data: "Branch Name is not provided" });
-        }
+
         const newAcc = new BankAccount({
             shopUserId: newUser._id,
             accountNumber,
@@ -89,41 +41,7 @@ class ShopController {
         newAcc.save();
 
         const { addressLine1, addressLine2, landMark, district, state, country, zipCode } = req.body;
-        if (!addressLine1) {
-            return res
-                .status(400)
-                .json({ status: false, data: "AddressLine1 is not provided" });
-        }
-        if (!addressLine2) {
-            return res
-                .status(400)
-                .json({ status: false, data: "AddrressLine2 is not provided" });
-        }
-        if (!landMark) {
-            return res
-                .status(400)
-                .json({ status: false, data: "Landmark is not provided" });
-        }
-        if (!district) {
-            return res
-                .status(400)
-                .json({ status: false, data: "District is not provided" });
-        }
-        if (!state) {
-            return res
-                .status(400)
-                .json({ status: false, data: "State is not provided" });
-        }
-        if (!country) {
-            return res
-                .status(400)
-                .json({ status: false, data: "Country is not provided" });
-        }
-        if (!zipCode) {
-            return res
-                .status(400)
-                .json({ status: false, data: "ZipCode is not provided" });
-        }
+
         const shopadd = new ShopAddress({
             shopUserId: newUser._id,
             addressLine1,
@@ -136,16 +54,7 @@ class ShopController {
         })
 
         const { shopName, GSTno } = req.body;
-        if (!shopName) {
-            return res
-                .status(400)
-                .json({ status: false, data: "Shop Name is not provided" });
-        }
-        if (!GSTno) {
-            return res
-                .status(400)
-                .json({ status: false, data: "GST Number is not provided" });
-        }
+
         const shop = new Shop({
             shopName,
             GSTno,
