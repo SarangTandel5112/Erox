@@ -1,9 +1,11 @@
 import express from 'express';
 import ShopController from '../Controller/ShopController';
-import ShopRegistration from "../Validation/ShopRegistration"
+import ShopRegistration from "../Validation/ShopUserValidation/ShopRegistration"
+import ShopRegistationForm from '../Validation/ShopUserValidation/ShopRegistrationForm';
 
 const shopcontroller = new ShopController();
 const shopvalidation = new ShopRegistration();
+const shopregistrationform = new ShopRegistationForm();
 
 class ShopRouter {
 
@@ -15,7 +17,7 @@ class ShopRouter {
     }
 
     private loadRoutes() {
-        this.router.route('/register').post(shopvalidation.validateshop, shopcontroller.shopRegister);
+        this.router.route('/register').post(shopvalidation.validateshop, shopregistrationform.checkDetails, shopcontroller.shopRegister);
         this.router.route('/verify/:token').get(shopcontroller.verifyemail);
     }
 
