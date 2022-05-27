@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import ShopUser from "../Models/ShopUserModels/ShopUser";
-import ShopAddress from "../Models/ShopUserModels/ShopAddress";
-import BankAccount from "../Models/ShopUserModels/BankAccount";
-import Shop from "../Models/ShopUserModels/Shop";
+import ShopUser from "../../Models/ShopUserModels/ShopUser";
+import ShopAddress from "../../Models/ShopUserModels/ShopAddress";
+import BankAccount from "../../Models/ShopUserModels/BankAccount";
+import Shop from "../../Models/ShopUserModels/Shop";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
-import Logger from "../Logger/Logger";
+import Logger from "../../Logger/Logger";
 import bcrypt from "bcryptjs";
 
 const logger = new Logger().logger;
